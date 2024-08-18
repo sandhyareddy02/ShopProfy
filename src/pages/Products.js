@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
-import Product from '../components/Product';
-import Hero from '../components/Hero';
+import Product from "../components/Product";
 
-const Home = () => {
+const Products = () => {
   const { products } = useContext(ProductContext);
   const [selectedCategory, setSelectedCategory] = useState("All");
+
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };
@@ -27,7 +27,6 @@ const Home = () => {
 
   return (
     <div>
-      <Hero />
       <section className="py-20">
         <div className="container mx-auto">
           <h1 className="text-3xl font-semibold mb-10 text-center">Explore Our Products</h1>
@@ -76,4 +75,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Products;

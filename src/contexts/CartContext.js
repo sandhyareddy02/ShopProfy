@@ -1,39 +1,37 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  // cart state
-  const [cart, setCart] = useState([]);
-  // item amount state
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [itemAmount, setItemAmount] = useState(0);
-  // total price state
   const [total, setTotal] = useState(0);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const total = cart.reduce((accumulator, currentItem) => {
       return accumulator + currentItem.price * currentItem.amount;
     }, 0);
     setTotal(total);
-  });
-
-  // update item amount
-  useEffect(() => {
-    if (cart) {
-      const amount = cart.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.amount;
-      }, 0);
-      setItemAmount(amount);
-    }
   }, [cart]);
 
-  // add to cart
+  useEffect(() => {
+    const amount = cart.reduce((accumulator, currentItem) => {
+      return accumulator + currentItem.amount;
+    }, 0);
+    setItemAmount(amount);
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   const addToCart = (product, id) => {
     const newItem = { ...product, amount: 1 };
-    // check if the item is already in the cart
-    const cartItem = cart.find((item) => {
-      return item.id === id;
-    });
+    const cartItem = cart.find((item) => item.id === id);
     if (cartItem) {
       const newCart = [...cart].map((item) => {
         if (item.id === id) {
@@ -46,26 +44,33 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  // remove from cart
   const removeFromCart = (id) => {
-    const newCart = cart.filter((item) => {
-      return item.id !== id;
-    });
+    const newCart = cart.filter((item) => item.id !== id);
     setCart(newCart);
   };
 
-  // cleart cart
   const clearCart = () => {
     setCart([]);
   };
 
-  // increase amount
   const increaseAmount = (id) => {
     const cartItem = cart.find((item) => item.id === id);
-    addToCart(cartItem, id);
+    if (cartItem.amount >= 2) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [id]: "Invalid Quantity. You can't add more than 2 items of the same product.",
+      }));
+      setTimeout(() => {
+        setErrors((prevErrors) => {
+          const { [id]: _, ...remainingErrors } = prevErrors;
+          return remainingErrors;
+        });
+      }, 10000);
+    } else {
+      addToCart(cartItem, id);
+    }
   };
 
-  // decrease amount
   const decreaseAmount = (id) => {
     const cartItem = cart.find((item) => item.id === id);
     if (cartItem) {
@@ -78,7 +83,7 @@ const CartProvider = ({ children }) => {
       });
       setCart(newCart);
     }
-    if (cartItem.amount < 2) {
+    if (cartItem.amount <= 1) {
       removeFromCart(id);
     }
   };
@@ -94,6 +99,7 @@ const CartProvider = ({ children }) => {
         decreaseAmount,
         itemAmount,
         total,
+        errors,
       }}
     >
       {children}
