@@ -1,18 +1,17 @@
-# E-commerce Shopping Website with FakeStore Api
+# E-commerce Shopping Cart Website
 
-This is a fully responsive e-commerce shopping website project built using React and Tailwind CSS. The website utilizes the Fake Store API to fetch data and display products. The Context API is used to manage state throughout the application.
+This is a fully responsive e-commerce shopping cart website project built using React JS and Tailwind CSS. The website utilizes the Fake Store API to fetch data and display products. 
 
 ## Table of Contents
 
 - [Demo](#demo)
 - [Features](#features)
-- [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Installation and Setup](#installation-and-setup)
 
 ## Demo
 
-You can see a live demo of this project [here](https://ecommerce-shop-react-app.vercel.app/).
+You can see a live demo of this project 
 
 ## Features
 
@@ -28,14 +27,6 @@ You can see a live demo of this project [here](https://ecommerce-shop-react-app.
 - **Fake Store API**: A free API for testing and prototyping e-commerce websites
 - **Context API**: A React API for managing global state in an application.
 
-## Screenshots
-
-Below are some screenshots of the website.
-
-![Home Page](/src/img/home-page.png)
-
-![Cart/Sidebar](/src/img/cart.png)
-
 ## Installation and Setup
 
 1. Clone the repository to your local machine.
@@ -45,4 +36,3 @@ Below are some screenshots of the website.
 
 
 Thank you! 🤍
-– Nigar Safarova
