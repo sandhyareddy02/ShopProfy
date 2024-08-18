@@ -6,19 +6,31 @@ This is a fully responsive e-commerce shopping cart website project built using 
 
 - [Demo](#demo)
 - [Features](#features)
+- [Highlights](#highlights)
 - [Technologies Used](#technologies-used)
 - [Installation and Setup](#installation-and-setup)
 
 ## Demo
 
-You can see a live demo of this project 
+You can see a live demo of this project [here](https://main--shopprofy.netlify.app/)
 
 ## Features
 
-- `Home page` displays the `featured products`, which are fetched from the **Fake Store API**. Each product card displays the product image, name, and price.
-- `Product Details` page showing a detailed view of the selected product, including an image, title, description and price.
-- `Cart` page displaying the added products, quantities and total price. The user can **add or remove products** from the cart, and the cart will update accordingly.
-- Fully `responsive design` that can adapt to different screen sizes and devices.
+- Home Page: Showcases featured products fetched from the Fake Store API. Each product card includes an image, name, and price.
+- Product Details Page: Provides a detailed view of a selected product, including an image, title, description, and price.
+- Cart Page: Displays added products, their quantities, and the total price. Users can add or remove items from the cart, with real-time updates.
+- Responsive Design: Ensures the layout adapts seamlessly to various screen sizes and devices.
+
+## Highlights
+- Add to Cart Button and View Button are displayed on the home page user can directly add the product to the cart.
+- Remove button is added in the cart section, user can remove product.
+- Discounts for the products to choose whether fixed or percentage in the Sidebar Page
+- Error Handling for empty checkout, invalid quantity, discounts less than $20
+- Responsive Design and State Management are well maintained in the code
+- login section for user authentication and persistent cart storage 
+- Menu Section on Header with redirecting paths for each
+- Succesful message for checkout and updating the cart after the checkout.
+- After applying the discounts the subtotal amount gets strike and updates with the new amount
 
 ## Tech Stack
 
