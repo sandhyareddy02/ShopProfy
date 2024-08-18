@@ -37,7 +37,6 @@ You can see a live demo of this project [here](https://main--shopprofy.netlify.a
 - **React**: A JavaScript library for building user interfaces
 - **Tailwind CSS**: A utility-first CSS framework for rapidly building custom designs.
 - **Fake Store API**: A free API for testing and prototyping e-commerce websites
-- **Context API**: A React API for managing global state in an application.
 
 ## Installation and Setup
 
@@ -46,5 +45,5 @@ You can see a live demo of this project [here](https://main--shopprofy.netlify.a
 3. Run `npm start` to start the application.
 4. Open `http://localhost:3000` in your browser to view the website.
 
-
+Venati Sandhya
 Thank you! 🤍
